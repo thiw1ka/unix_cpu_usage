@@ -1,0 +1,30 @@
+name: C/C++ CI
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: Create Artifact Directory
+      run: mkdir artifacts
+    - name: Copy Executable to Artifact Directory
+      run: |
+        # Replace 'your_executable_name' with the actual name of your executable
+        cp your_executable_name artifacts/your_executable_name
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: artifacts/
