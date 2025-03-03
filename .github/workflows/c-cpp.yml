@@ -31,8 +31,7 @@ jobs:
     - name: Copy Executable to Artifact Directory
       run: |
         mkdir artifacts
-        # Replace 'your_executable_name' with the actual name of your executable
-        cp build/your_executable_name artifacts/your_executable_name
+        cp build/cpu_usage_logger artifacts/cpu_usage_logger
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
