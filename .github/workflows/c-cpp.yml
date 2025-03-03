@@ -24,7 +24,7 @@ jobs:
         # Replace 'your_executable_name' with the actual name of your executable
         cp your_executable_name artifacts/your_executable_name
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: artifacts/
