@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.autoComplete.extraPaths": [
+			"/opt/ros/noetic/lib/python3/dist-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_subscriber/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_service/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_publisher/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_client/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_action_server/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_action_client/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_executors/lib/python3.8/site-packages",
+			"/opt/ros/foxy/lib/python3.8/site-packages"
+		],
+		"python.analysis.extraPaths": [
+			"/opt/ros/noetic/lib/python3/dist-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_subscriber/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_service/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_publisher/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_client/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_action_server/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_minimal_action_client/lib/python3.8/site-packages",
+			"/home/thivanka/ros2_ws/install/examples_rclpy_executors/lib/python3.8/site-packages",
+			"/opt/ros/foxy/lib/python3.8/site-packages"
+		],
+		"files.associations": {
+			"filesystem": "cpp",
+			"fstream": "cpp"
+		}
+	}
+}

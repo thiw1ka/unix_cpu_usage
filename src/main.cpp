@@ -1,10 +1,4 @@
-#include <iostream>
-#include <experimental/filesystem>
-#include <string>
-#include <fstream>
-#include <unordered_map>
-#include <chrono>
-#include <unistd.h>
+#include "../include/main.hpp"
 
 namespace fs = std::experimental::filesystem;
 
@@ -89,7 +83,7 @@ int main ()
 {
     std::printf("Cpu usage log is starting\n");
 
-    logger log("/home/thivanka/github_ws/log_cpu_usage/test.txt");
+    logger log("/home/thivanka/github_ws/unix_cpu_usage/test.txt");
     log.write("test script\n is it in next line");
     log.~logger();
     
