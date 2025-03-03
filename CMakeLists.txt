@@ -14,3 +14,6 @@ add_executable(cpu_usage_logger ${SOURCES})
 
 # Link libraries (if needed)
 # target_link_libraries(my_executable library1 library2)
+
+install(TARGETS cpu_usage_logger DESTINATION bin)
+install(FILES project.so DESTINATION include)
