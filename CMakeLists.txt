@@ -7,7 +7,7 @@ link_libraries(-lstdc++fs)
 include_directories(include)
 
 # Define source files
-file(GLOB SOURCES "src/main.cpp")
+file(GLOB SOURCES "src/*")
 
 # Add executable
 add_executable(cpu_usage_logger ${SOURCES})

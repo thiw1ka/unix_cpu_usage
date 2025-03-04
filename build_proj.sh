@@ -1,10 +1,10 @@
 #!/bin/bash
 
+rm -d build -r
+
+cmake -S . -B build -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+
 cd build
-
-rm cpu_usage_logger
-
-cmake.. -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
 
 make VEBOSE=1
 

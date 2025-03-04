@@ -97,7 +97,10 @@
 			"thread": "cpp",
 			"typeindex": "cpp",
 			"typeinfo": "cpp",
-			"iomanip": "cpp"
+			"iomanip": "cpp",
+			"numbers": "cpp",
+			"semaphore": "cpp",
+			"variant": "cpp"
 		}
 	}
 }
