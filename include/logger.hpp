@@ -26,7 +26,7 @@ class logger
         ~logger();
 
         void write (std::string line);
-		
+
         void listLogging (recordList* rList);
 };
 

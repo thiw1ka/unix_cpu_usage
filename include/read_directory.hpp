@@ -2,6 +2,7 @@
 #include <string>
 #include <experimental/filesystem>
 #include <memory>
+#include <fstream>
 
 #include "record.hpp"
 
@@ -20,8 +21,18 @@ class Readdirectory
 
         void updateRecordList (recordList* pRecordList);
 
+		std::vector<std::string> readFromFile (std::string path);
+
+		enum LogType
+		{
+			fullList = 0,
+			IndividualFile = 1
+		};
+
     private:
         std::string m_sPath = "";
+
+		std::fstream m_fsFile;
 
         // std::unordered_map<std::string,fs::directory_entry> m_list;
 };

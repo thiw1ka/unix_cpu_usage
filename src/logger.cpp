@@ -3,6 +3,13 @@
 
 logger::logger(std::string path) : m_sPath(path) 
 {
+	///TODO: need to fix this
+	// std::experimental::filesystem::directory_entry entry(m_sPath);
+	// if (!fs::exists(entry));
+	// {
+	// 	std::cout << "\nInvalid Path\n";
+	// 	throw std::invalid_argument("Invalid File Path: " + entry.path().generic_string());
+	// }
 	file = new std::ofstream(path+getDateTimeString()+".txt");
 	sleep(0.1);
 };
