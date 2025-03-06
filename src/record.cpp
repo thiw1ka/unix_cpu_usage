@@ -39,9 +39,10 @@ std::string record::getLoggingLine ()
 recordList::recordList()
 {
 	m_list = std::make_unique <std::unordered_map<std::string,record>> ();
+	m_selectedList = std::make_unique <std::vector<std::string>> ();
 }
 
-void recordList::add_record (record r) 
+void recordList::insertRecord (record r) 
 {
 	m_list->emplace(r.getProcessName(), r);
 }
@@ -72,4 +73,35 @@ std::string recordList::getPath (std::string filename)
 std::string record::getFilePath()
 {
 	return fileObj.path().generic_string();
+}
+
+record* recordList::getRecordByName(std::string name)
+{
+	return &m_list->at(name);
+}
+
+
+std::string record::getFormattedString(std::vector<std::string>* strVecPtr)
+{
+	std::string temp ="";
+	temp.append(this->processName + ":\n ");
+	if (this->processName == "meminfo")
+	{
+		for (std::string& i : *strVecPtr)
+		if(i.find("Mem") != i.npos)
+		temp.append(i);
+	}
+	else if (this->processName == "stat")
+	{
+		for (std::string& i : *strVecPtr)
+		if(i.find("cpu") != i.npos)
+		temp.append(i);
+	}
+	else
+	{
+		for (std::string& i : *strVecPtr)
+		temp.append(i);
+	}
+	
+	return temp;
 }

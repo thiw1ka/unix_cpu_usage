@@ -23,13 +23,19 @@ void Readdirectory::updateRecordList (recordList* pRecordList)
 
 	for (const auto& i: fs::directory_iterator(m_sPath))
 	{
-		pRecordList->add_record(i);
+		pRecordList->insertRecord(i);
 	}
 
 }
 
-std::vector<std::string> Readdirectory::readFromFile (std::string path)
+std::vector<std::string> Readdirectory::readFromFile (record* rec)
 {
+	std::string path = rec->getFilePath();
+
+	if(rec->is_Directory()) //if its directory go inside and read stat file
+	{
+		path.append("/stat");
+	}
 	std::ifstream file(path);
 
 	if (!file.is_open())
@@ -37,8 +43,9 @@ std::vector<std::string> Readdirectory::readFromFile (std::string path)
 		throw std::invalid_argument("file cannot be open:" + path);
 	}
 
-	std::string tempStr;
+	std::string tempStr(path + ": ");
 	std::vector<std::string> tempVec;
+	tempVec.push_back(tempStr);
 	while (std::getline(file, tempStr))
 	{
 		tempVec.push_back(tempStr);

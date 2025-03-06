@@ -18,8 +18,6 @@ class logger
         std::string m_sPath = "", m_sName = "";
         std::ofstream* file;
 
-        std::string getDateTimeString();
-
     public:
         logger(std::string path);
 
@@ -28,6 +26,8 @@ class logger
         void write (std::string line);
 
         void listLogging (recordList* rList);
+
+		std::string getDateTimeString();
 };
 
 

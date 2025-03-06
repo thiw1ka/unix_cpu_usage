@@ -24,7 +24,7 @@ std::string logger::getDateTimeString() {
 	auto time_t_now = std::chrono::system_clock::to_time_t(now);
 
 	std::stringstream ss;
-	ss << std::put_time(std::localtime(&time_t_now), "%m%d%y%H%M");
+	ss << std::put_time(std::localtime(&time_t_now), "%m%d%y%H%M%S");
 
 	return ss.str();
 }

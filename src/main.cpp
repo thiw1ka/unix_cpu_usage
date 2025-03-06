@@ -1,60 +1,59 @@
 #include "../include/main.hpp"
 
-class process_base 
-{
-    virtual void update_val ();
-    virtual double get_value ();     
-};
-
-class process : public process_base
-{
-    public:
-
-        process (int pName) {
-
-        }
-
-        void update_val () override
-        {
-
-        }
-
-        double get_value () override
-        {
-            return 0;
-        }
-};
-
-
-
 int main ()
 {
-    std::printf("Cpu usage log is starting\n");
+    std::printf("Kernal data log is starting\n");
 
     logger log("/home/thiva/unix_cpu_usage/logs/");
-    log.write("test script\n is it in next line");
+    log.write("Test script\n");
 
     recordList rList;
+
+	std::vector<std::string> kernalDataToRecord = {
+		"loadavg",
+		"meminfo",
+		"stat"
+	};
     
     std::string dirPath = "/proc/";
     Readdirectory dirObj(dirPath);
-    // dirObj.printFileListInsideDir();
     dirObj.updateRecordList(&rList);
 
-	auto fromFile = dirObj.readFromFile(rList.getPath("loadavg"));
+	std::string strLineToLog;
+	for (int i = 0; i < 2; i++)
+	{
+		log.write(log.getDateTimeString() + ":\n");
+		for (auto kdata : kernalDataToRecord)
+		{
+			auto getStringVec = dirObj.readFromFile(rList.getRecordByName(kdata));
+			strLineToLog = rList.getRecordByName(kdata)->getFormattedString(&getStringVec);
+			std::cout<< strLineToLog <<std::endl;
+			log.write(strLineToLog);
+		}
+		for (auto kdata : *rList.getListPtr())
+		{
+			try
+			{
+				if (!kdata.second.is_Directory()) continue;
+				auto getStringVec = dirObj.readFromFile(rList.getRecordByName(kdata.first));
+				strLineToLog = rList.getRecordByName(kdata.first)->getFormattedString(&getStringVec);
+				std::cout<< strLineToLog <<std::endl;
+				log.write(strLineToLog);
+			}
+			catch(const std::exception& e)
+			{
+				//we know some will fail here.
+				std::cerr << e.what() << '\n';
+				continue;
+			}
+			
 
-	std::cout<<"from File: \n";
-	for (auto& i : fromFile)
-		std::cout<<i<<std::endl;
 
-    // rList.print();
-	// char username[FILENAME_MAX];
-    // if (getlogin_r(username, FILENAME_MAX));
-	// std::cout << username <<std::endl;
+		}
+		log.write("\n\n");
 
-    log.listLogging(&rList);
-
-
+		sleep(1);
+	}
 
     return 0;
 };

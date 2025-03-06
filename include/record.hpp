@@ -42,6 +42,12 @@ class record
 
 		std::string getFilePath();
 
+		std::string getFormattedString(std::vector<std::string>* strVecPtr);
+
+		bool is_Directory() 
+		{
+			return bool(isDirectory);
+		}
 
 };
 
@@ -49,12 +55,15 @@ class recordList
 {
     std::unique_ptr <std::unordered_map<std::string,record>> m_list;
 
+	/// @brief Selected data to be written in logfile
 	std::unique_ptr <std::vector<std::string>> m_selectedList;
 
     public:
         recordList();
     
-        void add_record (record r);
+        /// @brief Insert record to the container
+        /// @param r record
+        void insertRecord (record r);
 
         void print ();
 
@@ -65,6 +74,8 @@ class recordList
 		std::string getPath (std::string filename);
 
 		void getListOfTargetsToRecord();
+
+		record* getRecordByName(std::string name);
 
 };
 

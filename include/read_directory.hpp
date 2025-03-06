@@ -21,7 +21,7 @@ class Readdirectory
 
         void updateRecordList (recordList* pRecordList);
 
-		std::vector<std::string> readFromFile (std::string path);
+		std::vector<std::string> readFromFile (record* rec);
 
 		enum LogType
 		{
